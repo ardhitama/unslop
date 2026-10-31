@@ -2,6 +2,21 @@
 
 Go through every group and note each sign you find with the file and line where it lives. Each line pairs the sign with its fix.
 
+## Contents
+
+- Structure and navigation
+- Liquid Glass and materials
+- Color and surfaces
+- Type
+- Symbols
+- Spacing
+- Copy
+- Components
+- Visuals
+- Motion
+- Accessibility
+- Template look, the defaults to check after the passes
+
 ## Structure and navigation
 
 - A custom tab bar, an `HStack` of buttons in a `Capsule` pinned to the bottom of a `ZStack`, often with emoji and a gradient on the selected tab → `TabView` with `Tab` items and SF Symbols
@@ -141,8 +156,12 @@ Go through every group and note each sign you find with the file and line where 
 
 ## Template look
 
-These are not slop, but they are what a cleaned up screen falls back to when nobody made a decision. Watch for them after the passes.
+These are not slop, but they are what a cleaned up screen falls back to when nobody made a decision. Watch for them after the passes, and treat any other default the result fell back on the same way.
 
+- A cream or off-white background behind every screen, like `Color(red: 0.98, green: 0.96, blue: 0.92)` → `Color(.systemBackground)` or the grouped background, with warmth carried by the accent and one moment
+- An italic or serif accent word inside a title, like `Text("Your money, *simplified*")` → one plain title in one style
+- Numbered section labels, like `01`, `02` and `03` or `01 — Overview` above each section → the section's name as a plain header, or no header when the content speaks for itself
+- `.monospaced` labels, captions and meta, often small and uppercase → the interface's own design, with mono only for code and identifiers
 - A default `List` with the default blue tint on a product whose world is warm or bright → an accent from the world and one moment
 - The Settings app look for every screen, rows of colored icon tiles → icon tiles only where the screen is settings
 - A title that would fit another app if you swapped the name → say what this product does, with its own nouns

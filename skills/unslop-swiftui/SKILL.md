@@ -1,6 +1,6 @@
 ---
 name: unslop-swiftui
-description: Turns vibecoded, AI-looking SwiftUI into an app that feels designed the Apple way, native to the platform and with its own character. Applies Apple's design principles and the Human Interface Guidelines, moves custom chrome onto system components, then fixes structure, spacing, color, symbols, copy, type, layout, details, visuals, motion and accessibility in that order, including Liquid Glass. Use when the user asks to unslop, polish, clean up or redesign a SwiftUI screen, make it feel native or "like Apple made it", or when SwiftUI code shows the usual tells like purple LinearGradient backgrounds, colored glow shadows, gradient text, emoji labels, fixed font sizes, hand-built tab bars and headers, glass on every card, uppercase tracked labels, repeatForever pulses or odd padding numbers. Works for iOS, iPadOS, macOS, watchOS and visionOS.
+description: Turns vibecoded, AI-looking SwiftUI into an app that feels designed the Apple way, native to the platform and with its own character. Applies Apple's design principles and the Human Interface Guidelines, moves custom chrome onto system components including Liquid Glass, then refines the screen in eleven passes from structure to accessibility. Use when the user asks to unslop, polish, clean up, review or redesign a SwiftUI screen, or to make it feel native or "like Apple made it", and when SwiftUI code shows AI tells like hue gradients and colored glows, gradient text, emoji labels, fixed font sizes, hand-built tab bars or headers, or glass on every card. Works for iOS, iPadOS, macOS, watchOS and visionOS.
 license: CC-BY-4.0
 metadata:
   author: Damir Sokolovsky
@@ -61,12 +61,12 @@ A screen redesign owns the screen and its edges:
 - The privacy of what it shows. Use `.privacySensitive()` on balances and personal data.
 - Any permission the screen needs, asked for when the feature is used, never at launch.
 
-It does not build widgets, Live Activities, App Intents, Spotlight, Handoff, an onboarding flow, the app icon, sounds or App Store art. When the screen points to one of these, note at most three in the report. For example, a glance task that a widget would serve better, or an app icon that is slop.
+It does not build widgets, Live Activities, App Intents, Spotlight, Handoff, an onboarding flow, the app icon, sounds or App Store art. When the screen points to one of these, note the ones that would matter most in the report, so it stays about the screen. For example, a glance task that a widget would serve better, or an app icon that is slop.
 
 ## Run it
 
 1. **Look at the screen.** Find the views that render it, the app's deployment targets and its asset catalog. Look at the screens around it too, where people arrive from and where each element leads. Judge what people see, not only the code.
-   - With an Xcode project, run `<skill folder>/scripts/sim.sh snapshot --name before` from the folder that holds the project. It builds the scheme for a simulator and saves light, dark and largest accessibility text size screenshots to `unslop/`. Add `--scheme`, `--project` or `--workspace` when there is more than one, and `--device` with an iPad's name from `xcrun simctl list devices available` for iPad. Numbers and dates follow the simulator's region, so pin it with `-- -AppleLocale en_US -AppleLanguages "(en)"` when it should match what the user sees. If it fails, read the error, since it usually names the fix.
+   - With an Xcode project, run `${CLAUDE_SKILL_DIR}/scripts/sim.sh snapshot --name before` from the folder that holds the project. It builds the scheme for a simulator and saves light, dark and largest accessibility text size screenshots to `unslop/`. Add `--scheme`, `--project` or `--workspace` when there is more than one, and `--device` with an iPad's name from `xcrun simctl list devices available` for iPad. Numbers and dates follow the simulator's region, so pin it with `-- -AppleLocale en_US -AppleLanguages "(en)"` when it should match what the user sees. If it fails, read the error, since it usually names the fix.
    - If Xcode's MCP server is connected, its preview tool can render a `#Preview` instead, which is faster for one view.
    - A Mac app has no simulator. Run it and ask the user for a screenshot, or render the view's `#Preview`.
    - Only a screenshot or a design file? Rebuild the screen as one SwiftUI file with plausible sample data and a `#Preview`, matching it closely, and treat that as the original.
@@ -74,10 +74,10 @@ It does not build widgets, Live Activities, App Intents, Spotlight, Handoff, an 
 3. **Decide how much to change.** Read the audit honestly before planning anything.
    - **Heavy slop**, many signs across structure, color, type and symbols. Run the full process below.
    - **Light slop**, a screen that is mostly designed with a few signs left. Polish mode. Fix only what the audit found, keep the order of sections, take the direction from the existing brand, and keep the palette, type, layout and visual. Bigger ideas go into the report as suggestions, not changes.
-   - **No slop.** Say so plainly and suggest two or three small refinements at most, with exact code. Apply them only if the user agrees. Never change a good screen just to make it different.
+   - **No slop.** Say so plainly and suggest only the small refinements that clearly help, with exact code. Apply them only if the user agrees. Never change a good screen just to make it different.
 4. **Set the direction and stop.** Write the direction described below, and list the questions only the user can answer. Examples: what a figure compares to, what an empty button should do, whether a claim is real. Show the audit, the direction and the questions, and wait for the answer before editing, since changing the direction later means redoing everything. Skip the wait only when the user already said to just do it. Then keep the bare facts for anything unanswered and list it in the report.
 5. **Fix in eleven passes, in order.** Finish a pass across the whole screen before starting the next. When nearly every line changes, plan the passes in order and then write the new view in one go, as long as every pass is applied. Structure comes first because it decides what is on the screen and in what order, and system containers bring their own spacing, type and materials. Spacing comes next because everything reads differently once the rhythm is right. Copy comes before type and layout because the length of a title decides its style and where it sits. Visuals and motion come late because they should fit a screen that already works without them. Accessibility comes last as a check of everything before it.
-6. **Check.** Build, render the preview states from the checklist, run the checklist at the end of this file, snapshot again with `--name after` and compare with the audit list and the before screenshots. Anything still on the list gets fixed.
+6. **Check.** Build, render the preview states from the checklist, run the checklist at the end of this file, snapshot again with `--name after` and compare with the audit list and the before screenshots. Then look for the defaults in the Template look group of [references/signs.md](references/signs.md), which is what a cleaned up screen falls back to when nobody decided. Anything still on the list gets fixed, and so does any other default the result fell back on that the list does not name yet.
 7. **Report** the direction, a few lines per pass about what changed, every section you moved and where, the open questions, any image prompt you wrote, out of scope notes, and anything you could not verify, like a Mac or watch layout you did not render.
 8. **Record, when asked or when the user wants something to share.** Build the story view and record the video described in [Story video](#story-video).
 
@@ -118,7 +118,7 @@ If the app already has a real brand, like an app icon, a color or a typeface tha
 ## 2. Spacing
 
 - Let the system space first. Default `.padding()`, the default spacing of stacks, `List` and `Form` insets, `.contentMargins` and `.safeAreaPadding` adapt to the platform. A number you write does not. None of them grow with the text size, so space that should grow uses `@ScaledMetric`.
-- Where you set values, a 4 point scale keeps the rhythm, 4, 8, 12, 16, 20, 24, 32, 40, 48. Odd values like `.padding(13)`, `.padding(.top, 7)`, `Spacer().frame(height: 37)` and nudges with `.offset` become steps from the scale or the system default.
+- Where you set values, a 4 point scale keeps the rhythm, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64. Odd values like `.padding(13)`, `.padding(.top, 7)`, `Spacer().frame(height: 37)` and nudges with `.offset` become steps from the scale or the system default.
 - Same thing, same size. All rows in a list share one height and one inset, all cards in a row share one padding.
 - Space shows grouping. Space inside a group is smaller than space between groups, so a list reads as one block and sections read as separate ones.
 - Things line up. Symbols sit in one column, labels start on one line, figures align on the trailing edge. Use `Label`, `LabeledContent` and `Grid` for aligned columns instead of fixed widths.
@@ -173,7 +173,7 @@ If the app already has a real brand, like an app icon, a color or a typeface tha
 
 - Text styles, not point sizes. `.largeTitle`, `.title`, `.title2`, `.title3`, `.headline`, `.body`, `.callout`, `.subheadline`, `.footnote`, `.caption` and `.caption2` scale with Dynamic Type and carry tracking and leading tuned for each size. `.font(.system(size: 17))` becomes `.body`. Nothing goes below `.caption2`.
 - A size outside the styles, like one large figure, scales with them through `@ScaledMetric(relativeTo: .largeTitle)`. A brand typeface uses `Font.custom(_:size:relativeTo:)` so it still scales.
-- San Francisco stays unless the brand has a real typeface. Pick its design for the feeling. `.default` for precise and calm, `.rounded` for friendly and playful, `.serif`, which is New York, for editorial and literary, and `.monospaced` for code and technical meta. Width variants like `.width(.condensed)` are for one display moment. One design for the interface plus at most one partner keeps it coherent.
+- San Francisco stays unless the brand has a real typeface. Pick its design for the feeling. `.default` for precise and calm, `.rounded` for friendly and playful, `.serif`, which is New York, for editorial and literary, and `.monospaced` only for code and identifiers, like an account number. Mono labels and captions are a template default, not a design. Width variants like `.width(.condensed)` are for one display moment. One design for the interface plus at most one partner keeps it coherent.
 - Let the text styles and the bars set weight. `.headline` is already semibold, and the navigation bar draws its large title in bold, while the `.largeTitle` style itself is regular. Add `.fontWeight(.semibold)` for emphasis. Keep `.heavy` and `.black` for one display figure the feeling calls for, never for labels and running text.
 - Hierarchy comes from the style, the weight and `.secondary` together, chosen once per role, not a different mix on every line.
 - No `.textCase(.uppercase)` with `.tracking` on labels. `TOTAL BALANCE` becomes `Balance`. List section headers keep whatever style the system gives them.
@@ -260,7 +260,7 @@ It adds a few minutes, so make it only when the user wants it. The details and t
 - Do not replace removed decoration with new decoration, and do not swap one trend for another, like glass on every card, grain, neon or bento grids.
 - Do not invent features, claims, data or comparisons.
 - Do not raise the deployment target, add a dependency or change the app's architecture to unslop a screen without asking.
-- Do not fall back to the same look for every product. The direction decides the tint, the type design and the moment, not habit.
+- Do not fall back on the look a model reaches for when nobody decided: a cream or off-white background in place of the system background, an italic accent word in a title, numbered `01` `02` `03` section labels, `.monospaced` labels and captions, capsules on every chip, field and card, and the same tint and layout for every product. The direction decides the tint, the type design and the moment.
 
 ## Checklist
 

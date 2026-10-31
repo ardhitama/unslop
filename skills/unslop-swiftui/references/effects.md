@@ -2,6 +2,14 @@
 
 Code treatments that turn an image into something made for this app. They are optional. Use one only when it fits the feeling in the direction, on the main visual only, like a welcome page or an empty state, and never as decoration on other elements.
 
+## Contents
+
+- Glyphs, with a full implementation
+- Halftone dots
+- Dithering
+- Duotone
+- Performance
+
 ## Glyphs
 
 Draw the image as a grid of characters, brightness picking the character. It works best when the characters come from the product's own material, so the image is literally made of what the product deals with.

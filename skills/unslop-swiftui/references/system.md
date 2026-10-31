@@ -2,6 +2,20 @@
 
 Values for each pass. Two kinds live here. System values, like the text styles, semantic colors and control styles, come from Apple, so use them as they are. Starting values, like the spacing scale, the corner radii, the motion durations and the haptic map, are this skill's taste for what the system leaves open. When the project already has a good design system, keep its values and only fix how they are used. Let the direction move any starting value.
 
+## Contents
+
+- Text styles and type designs
+- Spacing
+- Semantic colors
+- Accent
+- Corners
+- Buttons and controls
+- SF Symbols
+- Depth
+- Motion
+- Haptics
+- Platforms
+
 ## Text styles
 
 iOS and iPadOS at the default text size. Every style scales with Dynamic Type, so these are the base, not fixed sizes.
@@ -29,7 +43,7 @@ macOS uses smaller sizes, with body at 13, and watchOS and visionOS have their o
 | Precise, calm, technical | `.default` | The interface of most apps |
 | Friendly, playful, physical | `.rounded` | Interface and figures, fitness, habits, kids, home |
 | Editorial, literary, crafted | `.serif` | Large titles and reading text, never small labels or buttons |
-| Code, data, meta | `.monospaced` | Code, IDs, figures in tables, small meta |
+| Literal, technical | `.monospaced` | Code and identifiers, like an account number. Not labels, captions or meta |
 
 - One design for the interface plus at most one partner, like `.rounded` figures in a `.default` interface or a `.serif` large title.
 - `.monospacedDigit()` keeps figures aligned without switching the whole font to mono.

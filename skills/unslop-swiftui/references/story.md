@@ -4,6 +4,14 @@ How to build and record the story video, a short square video where the screen u
 
 SwiftUI already morphs. When a value depends on state and the state changes inside an animation, padding, spacing, frames, colors, corner radii, shadows and opacity all animate from the old value to the new one in place. So a story is one view whose values depend on a step number.
 
+## Contents
+
+1. Add the helper
+2. Build the story view
+3. Launch into it
+4. Record
+5. Clean up
+
 ## 1. Add the helper
 
 Copy [scripts/UnslopStory.swift](../scripts/UnslopStory.swift) into the app target. It only compiles in Debug builds and gives you:
