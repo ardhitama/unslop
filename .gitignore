@@ -2,9 +2,7 @@
 runs/
 .DS_Store
 .story-frames/
-examples/*
-!examples/dashboard.html
-!examples/hero.html
-!examples/assets/
-examples/assets/*
-!examples/assets/blob.webp
+# Screenshots and story videos that sim.sh writes next to a project
+unslop/
+xcuserdata/
+DerivedData/

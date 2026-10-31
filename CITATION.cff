@@ -1,19 +1,32 @@
 cff-version: 1.2.0
-message: "If you use or adapt unslop, please credit it like this."
-title: "unslop"
+message: "If you use or adapt unslop for SwiftUI, please credit the original author like this."
+title: "unslop for SwiftUI"
 type: software
 authors:
   - given-names: Damir
     family-names: Sokolovsky
     alias: heydamir
     website: "https://heydamir.design"
-repository-code: "https://github.com/heydamir/unslop"
+  - alias: ardhitama
+repository-code: "https://github.com/ardhitama/unslop"
 url: "https://heydamir.design/unslop"
 license: CC-BY-4.0
-abstract: "A Claude skill that turns vibecoded, AI-looking UI into a designed interface, from the creator of the Unslopping series on X."
+abstract: "A Claude skill that turns vibecoded, AI-looking SwiftUI into an app designed the Apple way. Adapted from unslop by Damir Sokolovsky, the creator of the Unslopping series on X."
 keywords:
   - design
   - ui
+  - swiftui
+  - apple
+  - human-interface-guidelines
   - claude
   - skill
   - unslop
+references:
+  - type: software
+    title: "unslop"
+    authors:
+      - given-names: Damir
+        family-names: Sokolovsky
+        alias: heydamir
+    repository-code: "https://github.com/heydamir/unslop"
+    license: CC-BY-4.0
