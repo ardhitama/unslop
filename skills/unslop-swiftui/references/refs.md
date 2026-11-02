@@ -1,6 +1,6 @@
 # References
 
-Look at these before the Visuals pass. Take their qualities, never their subject, palette or layout, so every product still gets its own screen.
+Pick the closest Apple screen from the table below when you write the direction, and look at all of these before the Visuals pass. Take their qualities, never their subject, palette or layout, so every product still gets its own screen.
 
 ## Apple's own apps
 
@@ -19,6 +19,26 @@ The best reference for an app on Apple platforms is the platform itself. Open th
 | Settings | The convention for lists, sections, footers and icon tiles. Use it for settings, not for the whole app |
 
 What they share: one subject per screen, system structure everyone already knows, color that always means something, and a detail only that app has.
+
+## The closest Apple screen
+
+The direction names the Apple screen whose task is closest to the one being unslopped, and the Check step holds the result next to it. It is the bar for quality, never for likeness. Compare how the subject reads, the hierarchy, the density, the spacing and the care in the details. Never copy its layout, tint or type, since every product still gets its own screen.
+
+| The screen | Closest Apple screen | Hold it to |
+| --- | --- | --- |
+| A dashboard of figures and a chart | Health, Summary. Stocks, one symbol | One answer first, figures whole, one chart that is clearly the biggest thing |
+| A list of things people open | Mail, the inbox. Reminders, a list | One line people scan by, one line of detail, a trailing date, swipe actions |
+| Transactions or activity | Wallet, a card's Latest Transactions | Who, one line of context, the amount trailing, grouped by day |
+| Settings and preferences | Settings | Grouped sections, footers that explain, icon tiles by category |
+| The detail of one thing | Contacts, a contact. Wallet, a pass | Its identity first, its actions next, then its facts in groups |
+| A library of media | Photos, Library. Music, Library | Content edge to edge, chrome out of the way |
+| Progress toward a goal | Fitness, Summary | One signature that always means the same thing |
+| A task on a map | Maps | Glass controls over the map, a sheet with detents |
+| Creating or editing something | Calendar, New Event. Reminders, Details | Form sections, Cancel and the action in the toolbar |
+| A conversation | Messages | Bubbles, the composer, timestamps only where time passes |
+| Writing or reflection | Journal. Notes | A warm character inside a fully native structure |
+
+Settings and Contacts ship on the iOS simulator with content, so for a settings screen or a list of people a screenshot is a real reference. Launch one with `xcrun simctl launch booted com.apple.Preferences` or `com.apple.MobileAddressBook`, then `xcrun simctl io booted screenshot unslop/apple.png`. Most other Apple apps open empty in the simulator or on a What's New sheet, so compare against what you know of them, or against a screenshot the user shares.
 
 ## Finished screens by Damir Sokolovsky
 

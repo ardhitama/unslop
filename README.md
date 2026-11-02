@@ -8,7 +8,13 @@ unslop-swiftui is a skill for Claude that turns vibecoded, AI-looking SwiftUI in
 
 ## Install
 
-For Claude Code, copy the skill into your skills folder.
+For Claude Code, install it with the [skills](https://github.com/vercel-labs/skills) CLI.
+
+```bash
+npx skills add ardhitama/unslop --skill unslop-swiftui -a claude-code -g
+```
+
+Drop `-g` to install it into the current project only. Or copy the skill into your skills folder by hand.
 
 ```bash
 git clone https://github.com/ardhitama/unslop
@@ -36,6 +42,7 @@ It audits the screen and proposes a direction before it edits anything, so you c
 - **Apple's way.** Built on the eight design principles in Apple's Human Interface Guidelines. It starts from the one task the screen is for, puts that answer first, moves custom chrome onto system components, keeps the accent for what people can tap, and treats accessibility as part of the design. It never invents data, comparisons or decoration.
 - **Passes.** Structure, spacing, color, symbols, copy, type, layout, details, visuals, motion and accessibility, in that order.
 - **Screenshots.** `scripts/sim.sh snapshot` builds your scheme for a simulator and captures light, dark and the largest accessibility text size, so the screen is judged as people see it.
+- **Review.** Holds the result next to the closest screen in Apple's own apps as the bar for quality, not a layout to copy. On a full redesign, a second agent then reviews the screenshots with a fresh eye, without the plan or the reasons behind it. The report lists every finding and what was not checked.
 - **Scope.** It owns the screen and its edges: states, Dynamic Type, VoiceOver, localization and privacy. Widgets, App Intents, the app icon and App Store art become short notes in the report, not changes.
 - **Visuals.** Builds moments in code first, like Swift Charts, MapKit and card shaped objects. When an empty state or welcome page needs art, it can generate it through an image service like fal, Replicate, OpenAI images or Higgsfield, and it shows the prompt and asks before every paid generation.
 - **Story video.** A square video of your screen unslopping itself, ready to post. SwiftUI animates the change, the simulator records it, and `scripts/sim.sh record` crops it. It needs only Xcode.
@@ -52,7 +59,7 @@ Xcode 26 or later with an iOS simulator, for the screenshots and the story video
 
 The method, the direction, the passes, the story video and the original references are by Damir Sokolovsky ([@heydamir](https://x.com/heydamir)). For the original skill for web screens, and to have Damir unslop a screen for you, see [heydamir.design/unslop](https://heydamir.design/unslop).
 
-Changes in this version: rewritten for SwiftUI and Apple platforms, with a structure pass for system components and Liquid Glass, an accessibility pass, Apple's text styles, semantic colors and SF Symbols in place of web tokens, a simulator script in place of the Playwright scripts, and a SwiftUI example in place of the HTML examples.
+Changes in this version: rewritten for SwiftUI and Apple platforms, with a structure pass for system components and Liquid Glass, an accessibility pass, Apple's text styles, semantic colors and SF Symbols in place of web tokens, a simulator script in place of the Playwright scripts, and a SwiftUI example in place of the HTML examples. The comparison with the closest Apple screen and the fresh-eye review are adapted from [Stageshow](https://github.com/benjitaylor/skills) by Benji Taylor.
 
 ## License
 

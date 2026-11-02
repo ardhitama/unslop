@@ -35,6 +35,7 @@ Go through every group and note each sign you find with the file and line where 
 - Settings or the account as a tab → a toolbar button
 - A screen action in the tab bar accessory → the toolbar, or next to the content it acts on
 - A greeting, a pep talk or a stat leading the screen while the answer to the task sits below → the answer first
+- Rows that carry every field, like the merchant, category, time, payment method, a status badge and a note on each transaction → what people need to pick the row, the rest on the screen it opens
 
 ## Liquid Glass and materials
 
@@ -60,6 +61,7 @@ Go through every group and note each sign you find with the file and line where 
 - The accent on text or figures that cannot be tapped → `.primary` or `.secondary`
 - System green or orange as small text on white → primary or secondary text next to a colored symbol
 - Green and red as the only signal of a change → color plus a sign or a symbol
+- An accent ring or a soft halo around the card the screen is about, to point at it → let its place, size and own surface lead. A ring means keyboard focus
 
 ## Type
 
@@ -90,6 +92,7 @@ Go through every group and note each sign you find with the file and line where 
 - Rows in one list with different paddings → one height, one inset
 - Groups that sit closer to their neighbours than to their own items → smaller spacing inside groups, bigger between them
 - Uneven padding inside sibling cards → one padding
+- Edges a point or two apart, like a badge almost on its card's edge or two columns that almost align → aligned exactly, or at least 8 points apart
 - Fixed `.frame(height:)` on text containers → `minHeight` or nothing
 - A bottom overlay with a guessed `.padding(.bottom, 120)` on the scroll content → `.safeAreaInset(edge: .bottom)` or the system tab bar
 
@@ -99,6 +102,7 @@ Go through every group and note each sign you find with the file and line where 
 - Pep talk subtitles like `Let's crush your money goals today!!` → remove, or one plain line of real information
 - Exclamation marks everywhere, `!!`, or any in errors → plain statements, an occasional one only in a brand voice
 - Changes without a reference, like `+12%!! 🚀` → the bare `12%` until the user says what it compares to, then `12% more than September`
+- The same signal said several times, like `12%` in the title, a badge and the chart's caption → once, where it answers the task
 - Wordy placeholders, like `Search anything...` → `Search`
 - Hype words like supercharge, seamless, unlock, magic, optimize → what the thing actually does
 - `Oops!`, `Something went wrong` and an `OK` button on an alert that asks for a choice → what happened, what to do, and a button that names the result
@@ -129,6 +133,7 @@ Go through every group and note each sign you find with the file and line where 
 - Text, fake buttons or a fake logo baked into an image → real `Text` in the view, an image without text
 - An image with a hard edge on a background of a different color → an image made for the background, or masked into it
 - An app icon that is a gradient tile with a sparkle → a note in the report with one simple glyph idea from the product
+- An invented logo, a letter or glyph in a colored square standing in for the app's mark or a company's → the real mark from the project's assets, or the name as plain text. Initials in a circle for a person without a photo are the platform's convention and stay
 
 ## Motion
 
@@ -140,6 +145,8 @@ Go through every group and note each sign you find with the file and line where 
 - Parallax and offsets driven by `GeometryReader` while scrolling → static layout
 - `.rotation3DEffect` card tilts → remove
 - Haptics on every tap → `.sensoryFeedback` on meaningful events only
+- Rows that jump into place when one is added, removed or moved, because the change happened outside `withAnimation` → animate the change so the list makes room
+- A symbol swapped in one frame, like play to pause → `.contentTransition(.symbolEffect(.replace))`
 - Motion that ignores Reduce Motion → a crossfade when `accessibilityReduceMotion` is on
 
 ## Accessibility
